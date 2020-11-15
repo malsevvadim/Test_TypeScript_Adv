@@ -1,0 +1,89 @@
+//инициализация проекта в самом начале
+npm init -y 
+//в результате появляется файл package.json
+//указывает, что у проекта есть зависимости
+
+
+//лог********************************
+Wrote to E:\git_rep\github.com\malsevvadim\Test_TypeScript_Adv\package.json:
+
+{
+  "name": "Test_TypeScript_Adv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malsevvadim/Test_TypeScript_Adv.git"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malsevvadim/Test_TypeScript_Adv/issues"
+  },
+  "homepage": "https://github.com/malsevvadim/Test_TypeScript_Adv#readme"
+}
+//*************************************************
+
+
+//а зависимостью для проекта будет непосредственно сам typescript
+npm install -D typescript
+//флаг -D значит для разработки или же --save-dev (это одно и тоже)
+
+//лог(*************
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN Test_TypeScript_Adv@1.0.0 No description
+
++ typescript@4.0.5
+added 1 package from 1 contributor and audited 1 package in 2.723s
+found 0 vulnerabilities
+//)**************************
+
+
+
+//глобальная версия компилятора
+tsc -v
+//она может отличаться от локальной версии нашего проекта
+//для того, чтобы их синхронизировать под Mac
+sudo npm i -g typescript
+//под Windows опустить sudo
+
+
+//создаём файл index.html
+в файле в первой строке указываем ! (вокслицательный знак) затем клавиша Tab и получаем html теги
+
+//для простоты разработки подключим  https://materializecss.com/
+
+//компилиция
+tsc .\app.ts
+
+//typescript шире чем просто консоль, консоль - это быстрый способ привести к js
+//мы можем этим управлять для этого есть команда 
+tsc --init
+
+//лог*************
+message TS6071: Successfully created a tsconfig.json file.
+//**************
+
+//добавим в файл tsconfig.json параметр exclude - массив строк - пути, которые нужно исключить из компилиции typescript
+//если исключений нет, то при запуске tsc без параметров в корне проекта, то он скомпилирует все файлы
+//ещё  вариант парам include - компиляция только того, что указано нами
+//ещё вариант парам files
+ "exclude" :[
+     "./module.ts"
+   ]
+  "include": [
+    "./src/**/*"
+  ]
+"files": [
+    "./module.ts"
+  ]
+
+
+//tsc --watch - компилятор следит за изменением файлов и сам компилируетсды
+
+//tsconfig.json параметр target - по умолчанию es5, но можем поставить es6
+node имяфайла
